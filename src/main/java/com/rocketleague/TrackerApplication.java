@@ -1,7 +1,9 @@
 package com.rocketleague;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
 public class TrackerApplication {
@@ -9,4 +11,5 @@ public class TrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TrackerApplication.class, args);
 	}
+
 }
