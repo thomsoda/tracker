@@ -1,0 +1,14 @@
+package com.rocketleague.refdata;
+
+public enum Arena {
+  DFH_STADIUM,
+  URBAN_CENTRAL,
+  MANNFIELD,
+  BECKWITH_PARK,
+  UTOPIA_COLISEUM,
+  WASTELAND,
+  DUNK_HOUSE,
+  NEO_TOKYO,
+  AQUADOME,
+  STARBASE_ARC
+}

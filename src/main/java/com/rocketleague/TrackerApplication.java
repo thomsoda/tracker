@@ -8,8 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @SpringBootApplication
 public class TrackerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TrackerApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(TrackerApplication.class, args);
+  }
 
 }
