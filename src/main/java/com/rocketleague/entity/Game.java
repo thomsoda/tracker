@@ -1,14 +1,12 @@
-package com.rocketleague;
+package com.rocketleague.entity;
 
 import com.rocketleague.refdata.Arena;
 import com.rocketleague.refdata.Playlist;
 import com.rocketleague.refdata.Team;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Game {
@@ -24,6 +22,8 @@ public class Game {
   private boolean overtimeInd;
   private boolean forfeitInd;
   private boolean competitiveInd;
+  @OneToMany(mappedBy = "primaryKey.game")
+  private Set<Score> scores;
 
   public int getIdGame() {
     return idGame;
@@ -55,5 +55,22 @@ public class Game {
 
   public boolean isCompetitiveInd() {
     return competitiveInd;
+  }
+
+  public int getOrangeScore() {
+    return getScore(Team.ORANGE);
+  }
+
+  public int getBlueScore() {
+    return getScore(Team.BLUE);
+  }
+
+  private int getScore(Team team) {
+    for (Score score : scores) {
+      if (team.equals(score.getTeam())) {
+        return score.getScore();
+      }
+    }
+    return 0;
   }
 }

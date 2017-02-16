@@ -1,6 +1,6 @@
 package com.rocketleague.ui;
 
-import com.rocketleague.TrackedPlayer;
+import com.rocketleague.entity.TrackedPlayer;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

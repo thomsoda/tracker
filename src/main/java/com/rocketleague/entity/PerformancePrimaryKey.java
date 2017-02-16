@@ -1,4 +1,4 @@
-package com.rocketleague;
+package com.rocketleague.entity;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;

@@ -1,5 +1,7 @@
-package com.rocketleague;
+package com.rocketleague.controller;
 
+import com.rocketleague.entity.TrackedPlayer;
+import com.rocketleague.repository.TrackedPlayerRepository;
 import com.rocketleague.ui.PlayerSummary;
 import com.rocketleague.ui.PlayerSummaryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Set;
-
 @Controller
 @RequestMapping(path = "/tracked-players")
-public class MainController {
+public class PlayerController {
 
   @Autowired
   private TrackedPlayerRepository trackedPlayerRepository;

@@ -1,4 +1,4 @@
-package com.rocketleague;
+package com.rocketleague.entity;
 
 import com.rocketleague.refdata.Team;
 
@@ -55,6 +55,10 @@ public class Performance {
 
   public boolean isMvpInd() {
     return mvpInd;
+  }
+
+  public Game getGame() {
+    return primaryKey.getGame();
   }
 
   public boolean inWinningTeam() {

@@ -1,6 +1,5 @@
-package com.rocketleague;
+package com.rocketleague.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -66,7 +65,7 @@ public class TrackedPlayer {
     return totalSaves;
   }
 
-  public int getTotalWins() {
+  private int getTotalWins() {
     int totalWins = 0;
     for (Performance performance : performances) {
       if (performance.inWinningTeam()) {
@@ -102,7 +101,7 @@ public class TrackedPlayer {
       return BigDecimal.ZERO;
     }
     return new BigDecimal(getTotalWins()).divide(new BigDecimal(performances.size()), 4, RoundingMode.HALF_UP)
-        .multiply(new BigDecimal(100)).setScale(2);
+        .multiply(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
   }
 
 }
