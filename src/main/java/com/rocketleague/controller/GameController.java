@@ -1,7 +1,9 @@
 package com.rocketleague.controller;
 
+import com.rocketleague.entity.Game;
 import com.rocketleague.entity.Performance;
 import com.rocketleague.refdata.Team;
+import com.rocketleague.repository.GameRepository;
 import com.rocketleague.repository.PerformanceRepository;
 import com.rocketleague.ui.GameDetail;
 import com.rocketleague.ui.GamePerformanceFactory;
@@ -19,6 +21,8 @@ public class GameController {
 
   @Autowired
   private PerformanceRepository performanceRepository;
+  @Autowired
+  private GameRepository gameRepository;
 
   @Autowired
   private GameSummaryFactory gameSummaryFactory;
@@ -28,7 +32,7 @@ public class GameController {
 
   @RequestMapping(path = "/game-history")
   public GameSummaryCatalog gameHistory(@RequestParam(value = "playerId") String playerId) {
-    List<Performance> performances = performanceRepository.findByPrimaryKeyIdPlayer(playerId);
+    List<Performance> performances = performanceRepository.findByPrimaryKeyIdPlayerOrderByPrimaryKeyGameDtPlayedDesc(playerId);
     return new GameSummaryCatalog(gameSummaryFactory.get(performances));
   }
 
@@ -36,7 +40,10 @@ public class GameController {
   public GameDetail gameDetail(@RequestParam(value = "gameId") int idGame) {
     List<Performance> bluePerformances = performanceRepository.findByPrimaryKeyGameIdGameAndTeamOrderByScoreDesc(idGame, Team.BLUE);
     List<Performance> orangePerformances = performanceRepository.findByPrimaryKeyGameIdGameAndTeamOrderByScoreDesc(idGame, Team.ORANGE);
-    return new GameDetail(gamePerformanceFactory.get(bluePerformances), gamePerformanceFactory.get(orangePerformances));
+
+    Game game = gameRepository.findOne(idGame);
+
+    return new GameDetail(gamePerformanceFactory.get(bluePerformances), gamePerformanceFactory.get(orangePerformances), game);
   }
 
 

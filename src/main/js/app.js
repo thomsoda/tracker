@@ -68,14 +68,16 @@ class Game extends React.Component {
 class PerformanceList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {orangePerformances: [], bluePerformances: []};
+        this.state = {orangePerformances: [], bluePerformances: [], orangeScore: null, blueScore: null};
     }
 
     componentDidMount() {
         client({method: 'GET', path: '/game-detail?gameId=' + this.props.params.idSelectedGame}).done(response => {
             this.setState({
                 orangePerformances: response.entity.orangePerformances,
-                bluePerformances: response.entity.bluePerformances
+                bluePerformances: response.entity.bluePerformances,
+                orangeScore: response.entity.orangeScore,
+                blueScore: response.entity.blueScore
             });
         });
     }
@@ -93,6 +95,7 @@ class PerformanceList extends React.Component {
             <div className="wrapper">
                 <div className="table">
                     <div className="row header blue">
+                        <div className="cell score">{this.state.blueScore}</div>
                         <div className="cell"></div>
                         <div className="cell"></div>
                         <div className="cell">SCORE</div>
@@ -103,6 +106,7 @@ class PerformanceList extends React.Component {
                     </div>
                     {bluePerformances}
                     <div className="row header orange">
+                        <div className="cell score">{this.state.orangeScore}</div>
                         <div className="cell"></div>
                         <div className="cell"></div>
                         <div className="cell">SCORE</div>
@@ -122,6 +126,7 @@ class Performance extends React.Component {
     render() {
         return (
             <div className="row">
+                <div className="cell blank"></div>
                 <div className="leftcell">{this.props.performance.idPlayer}</div>
                 <div className="cell">{this.props.performance.mvpInd? "MVP" : ""}</div>
                 <div className="cell">{this.props.performance.score}</div>
