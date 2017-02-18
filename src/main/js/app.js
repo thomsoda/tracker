@@ -38,9 +38,9 @@ class GameList extends React.Component {
             <div className="wrapper">
                 <div className="table">
                     <div className="row header">
+                        <div className="leftcell">DATE</div>
                         <div className="cell">PLAYLIST</div>
                         <div className="cell">GAME TYPE</div>
-                        <div className="cell">DATE</div>
                         <div className="cell">SCORE</div>
                         <div className="cell">W/L</div>
                     </div>
@@ -54,12 +54,81 @@ class GameList extends React.Component {
 class Game extends React.Component {
     render() {
         return (
-            <div className="row">
+            <Link to={"/game-detail/" + this.props.game.idGame} className="row">
+                <div className="leftcell">{moment(this.props.game.date).format('DD-MMM-YYYY HH:mm')}</div>
                 <div className="cell">{this.props.game.playlist}</div>
                 <div className="cell">{this.props.game.competitiveInd ? 'Competitive' : 'Friendly'}</div>
-                <div className="cell">{moment(this.props.game.date).format('DD-MMM-YYYY HH:mm')}</div>
                 <div className="cell">{this.props.game.orangeScore + ' - ' + this.props.game.blueScore}</div>
                 <div className="cell">{this.props.game.winLoss}</div>
+            </Link>
+        )
+    }
+}
+
+class PerformanceList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {orangePerformances: [], bluePerformances: []};
+    }
+
+    componentDidMount() {
+        client({method: 'GET', path: '/game-detail?gameId=' + this.props.params.idSelectedGame}).done(response => {
+            this.setState({
+                orangePerformances: response.entity.orangePerformances,
+                bluePerformances: response.entity.bluePerformances
+            });
+        });
+    }
+
+    render() {
+        var orangePerformances = this.state.orangePerformances.map(performance =>
+            <Performance key={performance.idPlayer} performance={performance}/>
+        );
+        var bluePerformances = this.state.bluePerformances.map(performance =>
+            <Performance key={performance.idPlayer} performance={performance}/>
+        );
+
+        return (
+
+            <div className="wrapper">
+                <div className="table">
+                    <div className="row header blue">
+                        <div className="cell"></div>
+                        <div className="cell"></div>
+                        <div className="cell">SCORE</div>
+                        <div className="cell">GOALS</div>
+                        <div className="cell">ASSISTS</div>
+                        <div className="cell">SAVES</div>
+                        <div className="cell">SHOTS</div>
+                    </div>
+                    {bluePerformances}
+                    <div className="row header orange">
+                        <div className="cell"></div>
+                        <div className="cell"></div>
+                        <div className="cell">SCORE</div>
+                        <div className="cell">GOALS</div>
+                        <div className="cell">ASSISTS</div>
+                        <div className="cell">SAVES</div>
+                        <div className="cell">SHOTS</div>
+                    </div>
+                    {orangePerformances}
+                </div>
+            </div>
+        )
+    }
+}
+
+class Performance extends React.Component {
+    render() {
+        return (
+            <div className="row">
+                <div className="leftcell">{this.props.performance.idPlayer}</div>
+                <div className="cell">{this.props.performance.mvpInd? "MVP" : ""}</div>
+                <div className="cell">{this.props.performance.score}</div>
+                <div className="cell">{this.props.performance.goals}</div>
+                <div className="cell">{this.props.performance.assists}</div>
+                <div className="cell">{this.props.performance.saves}</div>
+                <div className="cell">{this.props.performance.shots}</div>
             </div>
         )
     }
@@ -107,15 +176,15 @@ class Player extends React.Component {
     render() {
         return (
             <Link to={"/game-history/" + this.props.player.idPlayer} className="row">
-                    <div className="cell">{this.props.player.idPlayer}</div>
-                    <div className="cell">{this.props.player.gamesPlayed}</div>
-                    <div className="cell">{this.props.player.winPercentage.toFixed(2)}</div>
-                    <div className="cell">{this.props.player.goals}</div>
-                    <div className="cell">{this.props.player.assists}</div>
-                    <div className="cell">{this.props.player.saves}</div>
-                    <div className="cell">{this.props.player.averageGoals.toFixed(2)}</div>
-                    <div className="cell">{this.props.player.averageAssists.toFixed(2)}</div>
-                    <div className="cell">{this.props.player.averageSaves.toFixed(2)}</div>
+                <div className="leftcell">{this.props.player.idPlayer}</div>
+                <div className="cell">{this.props.player.gamesPlayed}</div>
+                <div className="cell">{this.props.player.winPercentage.toFixed(2)}</div>
+                <div className="cell">{this.props.player.goals}</div>
+                <div className="cell">{this.props.player.assists}</div>
+                <div className="cell">{this.props.player.saves}</div>
+                <div className="cell">{this.props.player.averageGoals.toFixed(2)}</div>
+                <div className="cell">{this.props.player.averageAssists.toFixed(2)}</div>
+                <div className="cell">{this.props.player.averageSaves.toFixed(2)}</div>
             </Link>
         )
     }
@@ -126,6 +195,7 @@ ReactDOM.render((
             <Route path="/" component={App}>
                 <IndexRoute component={PlayerList}/>
                 <Route path="game-history/:idSelectedPlayer" component={GameList}/>
+                <Route path="game-detail/:idSelectedGame" component={PerformanceList}/>
             </Route>
         </Router>
     ), document.getElementById('react')

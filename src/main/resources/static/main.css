@@ -9,6 +9,7 @@ body {
     background: #2b2b2b;
 }
 
+a {color:#3b3b3b;}
 a:visited {color:#3b3b3b;}
 
 .wrapper {
@@ -45,7 +46,20 @@ a:visited {color:#3b3b3b;}
     font-weight: 900;
     color: #ffffff;
     background: #ea6153;
+    font-size: 9px;
 }
+
+.row.header.blue {
+    color: #ffffff;
+    background: #00A5FF;
+}
+
+.row.header.orange {
+    color: #ffffff;
+    background: #FFAD38;
+}
+
+
 .row.green {
     background: #27ae60;
 }
@@ -64,7 +78,15 @@ a:visited {color:#3b3b3b;}
     display: table-cell;
     user-select: none;
     cursor: default;
+    text-align: center;
 }
+.leftcell {
+    padding: 6px 12px;
+    display: table-cell;
+    user-select: none;
+    cursor: default;
+}
+
 @media screen and (max-width: 580px) {
     .cell {
         padding: 2px 12px;
