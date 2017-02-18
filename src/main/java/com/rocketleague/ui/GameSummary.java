@@ -7,6 +7,7 @@ import com.rocketleague.refdata.WinLoss;
 import java.util.Date;
 
 public class GameSummary {
+  private final int idGame;
   private final Playlist playlist;
   private final boolean competitiveInd;
   private final Date date;
@@ -16,6 +17,7 @@ public class GameSummary {
   private final WinLoss winLoss;
 
   private GameSummary(Builder builder) {
+    idGame = builder.idGame;
     playlist = builder.playlist;
     competitiveInd = builder.competitiveInd;
     date = builder.date;
@@ -53,7 +55,12 @@ public class GameSummary {
     return winLoss;
   }
 
+  public int getIdGame() {
+    return idGame;
+  }
+
   public static class Builder {
+    private int idGame;
     private Playlist playlist;
     private boolean competitiveInd;
     private Date date;
@@ -61,6 +68,11 @@ public class GameSummary {
     private int orangeScore;
     private int blueScore;
     private WinLoss winLoss;
+
+    public Builder idGame(int idGame) {
+      this.idGame = idGame;
+      return this;
+    }
 
     public Builder playlist(Playlist playlist) {
       this.playlist = playlist;

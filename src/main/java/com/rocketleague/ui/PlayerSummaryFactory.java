@@ -3,14 +3,14 @@ package com.rocketleague.ui;
 import com.rocketleague.entity.TrackedPlayer;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class PlayerSummaryFactory {
 
-  public Set<PlayerSummary> get(Iterable<TrackedPlayer> trackedPlayers) {
-    Set<PlayerSummary> playerSummaries = new HashSet<>();
+  public List<PlayerSummary> get(Iterable<TrackedPlayer> trackedPlayers) {
+    List<PlayerSummary> playerSummaries = new ArrayList<>();
     for (TrackedPlayer trackedPlayer : trackedPlayers) {
       PlayerSummary playerSummary = new PlayerSummary.Builder()
           .idPlayer(trackedPlayer.getIdPlayer())
