@@ -15,6 +15,7 @@ public class GamePerformanceFactory {
           .idPlayer(performance.getPrimaryKey().getIdPlayer())
           .score(performance.getScore())
           .goals(performance.getGoals())
+          .assists(performance.getAssists())
           .shots(performance.getShots())
           .saves(performance.getSaves())
           .mvpInd(performance.isMvpInd())

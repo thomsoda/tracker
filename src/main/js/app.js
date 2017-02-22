@@ -128,7 +128,7 @@ class Performance extends React.Component {
             <div className="row">
                 <div className="cell blank"></div>
                 <div className="leftcell">{this.props.performance.idPlayer}</div>
-                <div className="cell">{this.props.performance.mvpInd? "MVP" : ""}</div>
+                <div className="cell">{this.props.performance.mvpInd? 'MVP' : ''}</div>
                 <div className="cell">{this.props.performance.score}</div>
                 <div className="cell">{this.props.performance.goals}</div>
                 <div className="cell">{this.props.performance.assists}</div>
