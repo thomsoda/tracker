@@ -4,6 +4,7 @@ const ReactDOM = require('react-dom')
 var Router = require('react-router').Router
 var Route = require('react-router').Route
 var IndexRoute = require('react-router').IndexRoute
+var IndexRedirect = require('react-router').IndexRedirect
 var browserHistory = require('react-router').browserHistory
 
 const PlayerList = require('./playerList').PlayerList;
@@ -28,8 +29,10 @@ ReactDOM.render((
             <Route path="/" component={App}>
                 <IndexRoute component={PlayerList}/>
                 <Route path=":idSelectedPlayer" component={TabbedPlayerData}>
-                    <IndexRoute component={GameHistory}/>
-                    <Route path="game-history(/game/:idSelectedGame)" component={GameHistory}/>
+                    <IndexRedirect to="game-history"/>
+                    <Route path="game-history" component={GameHistory}>
+                        <Route path="game/:idSelectedGame" component="{GameHistory}"/>
+                    </Route>
                     <Route path="player-details" component={PlayerDetails}/>
                     <Route path="team-details" component={TeamDetails}/>
                     <Route path="leaderboards" component={Leaderboards}/>

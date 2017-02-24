@@ -18,7 +18,6 @@ class TabbedPlayerDetailContainer extends React.Component {
 
     changeTab(tab) {
         this.setState({currentTab: tab.id});
-        console.log("Current tab is: " + tab.id);
     }
 
     render() {
@@ -64,6 +63,7 @@ class Tabs extends React.Component {
 }
 
 class Tab extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {currentTab: 0, tabList: tabList};
@@ -78,8 +78,8 @@ class Tab extends React.Component {
 
     render() {
         return (
-            <li className={this.props.isCurrent ? 'current' : null} onClick={this.handleClick}>
-                <Link to={"/" + this.props.idSelectedPlayer + this.props.url} className="a">
+            <li onClick={this.handleClick}>
+                <Link to={"/" + this.props.idSelectedPlayer + this.props.url} activeClassName="red">
                     {this.props.name}
                 </Link>
             </li>
