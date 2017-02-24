@@ -9,8 +9,13 @@ body {
     background: #2b2b2b;
 }
 
-a {color:#3b3b3b;}
-a:visited {color:#3b3b3b;}
+.horizontal{
+    display: inline-block;
+    width: 100%;
+}
+
+
+.a {color:white;}
 
 .wrapper {
     margin: 0 auto;
@@ -19,8 +24,10 @@ a:visited {color:#3b3b3b;}
 }
 
 .table {
-    margin: 0 0 40px 0;
+    margin: 0 0 0 0;
     width: 100%;
+    max-height: 500px;
+    overflow: scroll;
     display: table;
 }
 @media screen and (max-width: 580px) {
@@ -41,6 +48,15 @@ a:visited {color:#3b3b3b;}
     background: #C4C4C4;
 }
 
+.playername {
+    font-weight: 900;
+    color: #ffffff;
+    background: #2b2b2b;
+    font-size: 40px;
+    line-height: 40px;
+    display: inline-block;
+}
+
 .row.header {
     font-weight: 900;
     color: #ffffff;
@@ -58,6 +74,9 @@ a:visited {color:#3b3b3b;}
     background: #FFAD38;
 }
 
+.row.clickable {
+    color:#3b3b3b;
+}
 
 .row.green {
     background: #27ae60;
@@ -85,7 +104,7 @@ a:visited {color:#3b3b3b;}
 }
 
 .cell.blank {
-    background: #2b2b2b;
+    background: #ea6153;
 }
 
 .leftcell {
@@ -100,4 +119,67 @@ a:visited {color:#3b3b3b;}
         padding: 2px 12px;
         display: block;
     }
+}
+
+.right{
+    float:right;
+    text-align:right;
+}
+
+.green{background: #88d274;}
+.green.hover{background: #9de789;}
+.red{background: #ea6153;}
+.button{
+    font-weight: 900;
+    width:150px;
+    float:right;
+    user-select: none;
+    cursor: default;
+    font-size: 9px;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 6px 12px;
+    text-align:center;
+}
+
+.valign {
+    margin-top: 9px;
+}
+
+.button:hover {
+    background: #9de789;
+}
+
+ul {
+    font-weight: 900;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #82423b;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    color: white;
+    text-decoration: none;
+    user-select: none;
+    cursor: default;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.current {
+    color: white;
+    background-color: #ea6153;
+    text-decoration: none;
 }
