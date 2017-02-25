@@ -9,7 +9,7 @@ class PlayerList extends React.Component {
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/tracked-players/all'}).done(response => {
+        client({method: 'GET', path: '/rocketleague/tracked-players/all'}).done(response => {
             this.setState({players: response.entity.playerSummaries});
         });
     }
@@ -44,7 +44,7 @@ class PlayerList extends React.Component {
 class Player extends React.Component {
     render() {
         return (
-            <Link to={"" + this.props.player.idPlayer} className="row clickable">
+            <Link to={"rocketleague/" + this.props.player.idPlayer} className="row clickable">
                 <div className="leftcell">{this.props.player.idPlayer}</div>
                 <div className="cell">{this.props.player.gamesPlayed}</div>
                 <div className="cell">{this.props.player.winPercentage.toFixed(2)}</div>

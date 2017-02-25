@@ -25,7 +25,7 @@ class TabbedPlayerDetailContainer extends React.Component {
             <div className="wrapper">
                 <div className="horizontal">
                     <div className="playername">{this.props.params.idSelectedPlayer}</div>
-                    <Link to="/" className="green button valign">BACK TO PLAYER LIST</Link>
+                    <Link to="/rocketleague" className="green button valign">BACK TO PLAYER LIST</Link>
                 </div>
                 <Tabs currentTab={this.state.currentTab}
                       changeTab={this.changeTab}
@@ -79,7 +79,7 @@ class Tab extends React.Component {
     render() {
         return (
             <li onClick={this.handleClick}>
-                <Link to={"/" + this.props.idSelectedPlayer + this.props.url} activeClassName="red">
+                <Link to={"/rocketleague/" + this.props.idSelectedPlayer + this.props.url} activeClassName="red">
                     {this.props.name}
                 </Link>
             </li>

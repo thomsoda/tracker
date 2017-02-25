@@ -26,7 +26,7 @@ class App extends React.Component {
 
 ReactDOM.render((
         <Router history={browserHistory}>
-            <Route path="/" component={App}>
+            <Route path="/rocketleague" component={App}>
                 <IndexRoute component={PlayerList}/>
                 <Route path=":idSelectedPlayer" component={TabbedPlayerData}>
                     <IndexRedirect to="game-history"/>

@@ -23,7 +23,7 @@ class GameList extends React.Component {
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/game-history?playerId=' + this.props.idSelectedPlayer}).done(response => {
+        client({method: 'GET', path: '/rocketleague/game-history?playerId=' + this.props.idSelectedPlayer}).done(response => {
             this.setState({games: response.entity.gameSummaries});
         });
     }
@@ -52,7 +52,7 @@ class GameList extends React.Component {
 class Game extends React.Component {
     render() {
         return (
-            <Link to={"/" + this.props.idSelectedPlayer + "/game-history/game/" + this.props.game.idGame}
+            <Link to={"/rocketleague/" + this.props.idSelectedPlayer + "/game-history/game/" + this.props.game.idGame}
                   className="row clickable">
                 <div className="leftcell">{moment(this.props.game.date).format('DD-MMM-YYYY HH:mm')}</div>
                 <div className="cell">{this.props.game.playlist}</div>
@@ -89,7 +89,7 @@ class GameDetail extends React.Component {
         if (idSelectedGame == null) {
             return;
         }
-        client({method: 'GET', path: '/game-detail?gameId=' + idSelectedGame}).done(response => {
+        client({method: 'GET', path: '/rocketleague/game-detail?gameId=' + idSelectedGame}).done(response => {
             this.setState({
                 orangePerformances: response.entity.orangePerformances,
                 bluePerformances: response.entity.bluePerformances,
@@ -138,7 +138,7 @@ class GameDetail extends React.Component {
                     {orangePerformances}
                 </div>
                 <div className="right">
-                    <Link to={"/" + this.props.idSelectedPlayer + "/game-history/"}>
+                    <Link to={"/rocketleague/" + this.props.idSelectedPlayer + "/game-history/"}>
                         <div className="green button">BACK TO GAME LIST</div>
                     </Link>
                 </div>
