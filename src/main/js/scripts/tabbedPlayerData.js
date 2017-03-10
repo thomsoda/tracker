@@ -3,9 +3,10 @@ const Link = require('react-router').Link;
 
 var tabList = [
     {'id': 0, 'name': 'GAME HISTORY', 'url': '/game-history'},
-    {'id': 1, 'name': 'PLAYER DETAILS', 'url': '/player-details'},
-    {'id': 2, 'name': 'TEAM DETAILS', 'url': '/team-details'},
-    {'id': 3, 'name': 'LEADERBOARDS', 'url': '/leaderboards'}
+    {'id': 1, 'name': 'AVERAGES', 'url': '/averages'},
+    {'id': 2, 'name': 'CONTRIBUTIONS', 'url': '/contributions'},
+    {'id': 3, 'name': 'FORM', 'url': '/form'},
+    {'id': 4, 'name': 'MISC', 'url': '/misc'}
 ];
 
 class TabbedPlayerDetailContainer extends React.Component {

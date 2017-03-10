@@ -46,5 +46,4 @@ public class GameController {
     return new GameDetail(gamePerformanceFactory.get(bluePerformances), gamePerformanceFactory.get(orangePerformances), game);
   }
 
-
 }

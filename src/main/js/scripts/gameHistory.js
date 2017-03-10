@@ -64,7 +64,8 @@ class Game extends React.Component {
     }
 
     getScore() {
-        if (this.props.game.winLoss === "WIN" && (this.props.game.orangeScore > this.props.game.blueScore)) {
+        if ((this.props.game.winLoss === "WIN" && (this.props.game.orangeScore > this.props.game.blueScore)) ||
+            (this.props.game.winLoss === "LOSS" && (this.props.game.orangeScore < this.props.game.blueScore))) {
             return (this.props.game.orangeScore + ' - ' + this.props.game.blueScore);
         }
         return (this.props.game.blueScore + ' - ' + this.props.game.orangeScore);

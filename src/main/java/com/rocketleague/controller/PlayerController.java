@@ -1,10 +1,11 @@
 package com.rocketleague.controller;
 
-import com.rocketleague.ui.stats.player.PlayerStats;
 import com.rocketleague.entity.TrackedPlayer;
 import com.rocketleague.repository.TrackedPlayerRepository;
 import com.rocketleague.ui.PlayerSummaryCatalog;
 import com.rocketleague.ui.PlayerSummaryFactory;
+import com.rocketleague.ui.stats.player.PlayerAverages;
+import com.rocketleague.ui.stats.player.PlayerStats;
 import com.rocketleague.ui.stats.player.PlayerStatsFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,4 +36,31 @@ public class PlayerController {
     TrackedPlayer trackedPlayer = trackedPlayerRepository.findOne(idPlayer);
     return playerStatsFactory.get(trackedPlayer);
   }
+
+  @GetMapping(path = "/goal-averages")
+  public PlayerAverages getGoalAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findGoalAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/score-averages")
+  public PlayerAverages getScoreAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findScoreAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/assist-averages")
+  public PlayerAverages getAssistAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findAssistAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/save-averages")
+  public PlayerAverages getSaveAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findSaveAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/shot-averages")
+  public PlayerAverages getShotAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findShotAverages(playlist, isRanked));
+  }
+
+
 }

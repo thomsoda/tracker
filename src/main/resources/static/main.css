@@ -99,6 +99,10 @@ body {
     text-align: center;
 }
 
+.cell.average {
+    width : 20%;
+}
+
 .cell.score {
     font-size: 12px;
 }

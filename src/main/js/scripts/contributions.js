@@ -2,13 +2,13 @@ const client = require('./client');
 const React = require('react');
 const Link = require('react-router').Link;
 
-class TeamDetails extends React.Component {
+class Contributions extends React.Component {
     render() {
         return (
-            <div>Team Details here</div>
+            <div>Contributions here</div>
         );
     }
 
 }
 
-export {TeamDetails};
+export {Contributions};

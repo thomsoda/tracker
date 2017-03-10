@@ -10,9 +10,10 @@ var browserHistory = require('react-router').browserHistory
 const PlayerList = require('./playerList').PlayerList;
 const TabbedPlayerData = require('./tabbedPlayerData').TabbedPlayerDetailContainer;
 const GameHistory = require('./gameHistory').GameHistory;
-const PlayerDetails = require('./playerDetails').PlayerDetails;
-const TeamDetails = require('./teamDetails').TeamDetails;
-const Leaderboards = require('./leaderboards').Leaderboards;
+const AveragesTab = require('./averagesTab').AveragesTab;
+const FormTab = require('./formTab').FormTab;
+const Contributions = require('./contributions').Contributions;
+const Misc = require('./misc').Misc;
 
 class App extends React.Component {
     render() {
@@ -33,9 +34,10 @@ ReactDOM.render((
                     <Route path="game-history" component={GameHistory}>
                         <Route path="game/:idSelectedGame" component="{GameHistory}"/>
                     </Route>
-                    <Route path="player-details" component={PlayerDetails}/>
-                    <Route path="team-details" component={TeamDetails}/>
-                    <Route path="leaderboards" component={Leaderboards}/>
+                    <Route path="averages" component={AveragesTab}/>
+                    <Route path="contributions" component={Contributions}/>
+                    <Route path="form" component={FormTab}/>
+                    <Route path="misc" component={Misc}/>
                 </Route>
             </Route>
         </Router>
