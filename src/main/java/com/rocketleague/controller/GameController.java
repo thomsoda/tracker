@@ -5,10 +5,7 @@ import com.rocketleague.entity.Performance;
 import com.rocketleague.refdata.Team;
 import com.rocketleague.repository.GameRepository;
 import com.rocketleague.repository.PerformanceRepository;
-import com.rocketleague.ui.GameDetail;
-import com.rocketleague.ui.GamePerformanceFactory;
-import com.rocketleague.ui.GameSummaryCatalog;
-import com.rocketleague.ui.GameSummaryFactory;
+import com.rocketleague.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,15 +22,14 @@ public class GameController {
   private GameRepository gameRepository;
 
   @Autowired
-  private GameSummaryFactory gameSummaryFactory;
-
-  @Autowired
   private GamePerformanceFactory gamePerformanceFactory;
 
   @RequestMapping(path = "/game-history")
-  public GameSummaryCatalog gameHistory(@RequestParam(value = "playerId") String playerId) {
-    List<Performance> performances = performanceRepository.findByPrimaryKeyIdPlayerOrderByPrimaryKeyGameDtPlayedDesc(playerId);
-    return new GameSummaryCatalog(gameSummaryFactory.get(performances));
+  public GameSummaryCatalog gameHistory(@RequestParam(value = "playerId") String playerId,
+                                        @RequestParam(value = "isRanked", required = false) Boolean isRanked,
+                                        @RequestParam(value = "playlist", required = false) String playlist) {
+    List<GameSummary> gameSummaries = performanceRepository.findGameSummaries(playerId, playlist, isRanked);
+    return new GameSummaryCatalog(gameSummaries);
   }
 
   @RequestMapping(path = "/game-detail")

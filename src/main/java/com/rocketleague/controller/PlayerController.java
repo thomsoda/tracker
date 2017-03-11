@@ -38,7 +38,8 @@ public class PlayerController {
   }
 
   @GetMapping(path = "/goal-averages")
-  public PlayerAverages getGoalAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+  public PlayerAverages getGoalAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked,
+                                        @RequestParam(value = "playlist", required = false) String playlist) {
     return new PlayerAverages(trackedPlayerRepository.findGoalAverages(playlist, isRanked));
   }
 
@@ -62,5 +63,28 @@ public class PlayerController {
     return new PlayerAverages(trackedPlayerRepository.findShotAverages(playlist, isRanked));
   }
 
+  @GetMapping(path = "/hattrick-averages")
+  public PlayerAverages getHatTrickAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findHatTrickAverages(playlist, isRanked));
+  }
 
+  @GetMapping(path = "/playmaker-averages")
+  public PlayerAverages getPlaymakerAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findPlaymakerAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/saviour-averages")
+  public PlayerAverages getSaviourAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findSaviourAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/mvp-averages")
+  public PlayerAverages getMvpAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findMvpAverages(playlist, isRanked));
+  }
+
+  @GetMapping(path = "/team-mvp-averages")
+  public PlayerAverages getTeamMvpAverages(@RequestParam(value = "isRanked", required = false) Boolean isRanked, @RequestParam(value = "playlist", required = false) String playlist) {
+    return new PlayerAverages(trackedPlayerRepository.findTeamMvpAverages(playlist, isRanked));
+  }
 }

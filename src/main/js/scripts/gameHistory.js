@@ -8,7 +8,9 @@ class GameHistory extends React.Component {
         return (
             <div>
                 <GameList idSelectedPlayer={this.props.params.idSelectedPlayer}
-                          idSelectedGame={this.props.params.idSelectedGame}/>
+                          idSelectedGame={this.props.params.idSelectedGame}
+                          playlist={this.props.playlist}
+                          gameType={this.props.gameType}/>
                 <GameDetail idSelectedPlayer={this.props.params.idSelectedPlayer}
                             idSelectedGame={this.props.params.idSelectedGame}/>
             </div>
@@ -23,7 +25,16 @@ class GameList extends React.Component {
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/rocketleague/game-history?playerId=' + this.props.idSelectedPlayer}).done(response => {
+        this.loadGameHistory(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.loadGameHistory(nextProps);
+    }
+
+    loadGameHistory(props) {
+        var params = (props.gameType === "ALL" ? "" : "&isRanked=" + (props.gameType === "COMPETITIVE")) + (props.playlist === "ALL" ? "" : "&playlist=" + props.playlist);
+        client({method: 'GET', path: '/rocketleague/game-history?playerId=' + props.idSelectedPlayer + params}).done(response => {
             this.setState({games: response.entity.gameSummaries});
         });
     }

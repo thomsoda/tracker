@@ -12,13 +12,23 @@ var tabList = [
 class TabbedPlayerDetailContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {currentTab: 0, tabList: tabList};
+        this.state = {currentTab: 0, tabList: tabList, playlist: "ALL", gameType: "ALL"};
 
         this.changeTab = this.changeTab.bind(this);
+        this.onSelectPlaylist = this.onSelectPlaylist.bind(this);
+        this.onSelectGameType = this.onSelectGameType.bind(this);
     }
 
     changeTab(tab) {
         this.setState({currentTab: tab.id});
+    }
+
+    onSelectPlaylist(event) {
+        this.setState({playlist: event.target.value});
+    }
+
+    onSelectGameType(event) {
+        this.setState({gameType: event.target.value});
     }
 
     render() {
@@ -26,13 +36,24 @@ class TabbedPlayerDetailContainer extends React.Component {
             <div className="wrapper">
                 <div className="horizontal">
                     <div className="playername">{this.props.params.idSelectedPlayer}</div>
-                    <Link to="/rocketleague" className="green button valign">BACK TO PLAYER LIST</Link>
+                    <select className="green valign" onChange={this.onSelectPlaylist} value={this.state.playlist}>
+                        <option value="ALL">ALL PLAYLISTS</option>
+                        <option value="STANDARD">STANDARD</option>
+                        <option value="DOUBLES">DOUBLES</option>
+                        <option value="CHAOS">CHAOS</option>
+                    </select>
+                    <select className="green valign" onChange={this.onSelectGameType} value={this.state.gameType}>
+                        <option value="ALL">ALL GAMETYPES</option>
+                        <option value="COMPETITIVE">COMPETITIVE</option>
+                        <option value="FRIENDLY">FRIENDLY</option>
+                    </select>
+                    {/*<Link to="/rocketleague" className="green button valign">PLAYER LIST</Link>*/}
                 </div>
                 <Tabs currentTab={this.state.currentTab}
                       changeTab={this.changeTab}
                       tabList={this.state.tabList}
                       idSelectedPlayer={this.props.params.idSelectedPlayer}/>
-                {this.props.children}
+                {React.cloneElement(this.props.children, {playlist: this.state.playlist, gameType: this.state.gameType })}
             </div>
         )
     }

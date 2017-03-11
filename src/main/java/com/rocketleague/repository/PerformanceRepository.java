@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PerformanceRepository extends CrudRepository<Performance, String> {
+public interface PerformanceRepository extends CrudRepository<Performance, String>, PerformanceRepositoryCustom {
 
   List<Performance> findByPrimaryKeyIdPlayerOrderByPrimaryKeyGameDtPlayedDesc(String idPlayer);
 
