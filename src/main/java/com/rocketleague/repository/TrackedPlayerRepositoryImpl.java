@@ -1,5 +1,7 @@
 package com.rocketleague.repository;
 
+import com.rocketleague.entity.mapped.PlayerAverage;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -71,10 +73,10 @@ public class TrackedPlayerRepositoryImpl implements TrackedPlayerRepositoryCusto
 
   @Override
   public List<PlayerAverage> findTeamMvpAverages(String playlist, Boolean isRanked) {
-    String selectClause = "select p.id_player, count(1) as games, ifnull(sum(vtm.mvp_ind), 0) as total, ifnull(sum(vtm.mvp_ind) / count(1), 0) as average ";
+    String selectClause = "select p.id_player, count(1) as games, sum(case when vtm.id_player is null then 0 else 1 end) as total, sum(case when vtm.id_player is null then 0 else 1 end) / count(1) as average ";
     String leftJoinClause = "left join v_team_mvp vtm on vtm.id_player = p.id_player and vtm.id_game = p.id_game ";
     String whereClause = getWhereClause(playlist, isRanked);
-    String orderByClause = "order by sum(vtm.mvp_ind) / count(1) desc, p.id_player;";
+    String orderByClause = "order by sum(case when vtm.id_player is null then 0 else 1 end) / count(1) desc, p.id_player;";
     Query query = entityManager.createNativeQuery(selectClause + FROM_CLAUSE + leftJoinClause + whereClause + GROUP_BY_CLAUSE +
         orderByClause, "PlayerAverageMapping");
     return query.getResultList();

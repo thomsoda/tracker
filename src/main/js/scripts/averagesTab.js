@@ -10,14 +10,23 @@ class AveragesTab extends React.Component {
         return (
             <div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/score-averages?" + params} columnHeader="SCORE"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/goal-averages?" + params} columnHeader="GOALS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/assist-averages?" + params} columnHeader="SAVES"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/save-averages?" + params} columnHeader="ASSISTS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/shot-averages?" + params} columnHeader="SHOTS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/hattrick-averages?" + params} columnHeader="HAT TRICKS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/playmaker-averages?" + params} columnHeader="PLAYMAKERS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/saviour-averages?" + params} columnHeader="SAVIOURS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/mvp-averages?" + params} columnHeader="MVPS"/>
+                <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/team-mvp-averages?" + params} columnHeader="TEAM MVPS"/>
             </div>
         );

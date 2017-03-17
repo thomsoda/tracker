@@ -1,5 +1,7 @@
 package com.rocketleague.ui;
 
+import com.rocketleague.entity.mapped.GameSummary;
+
 import java.util.List;
 
 public class GameSummaryCatalog {

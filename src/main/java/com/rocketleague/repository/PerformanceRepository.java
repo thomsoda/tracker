@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface PerformanceRepository extends CrudRepository<Performance, String>, PerformanceRepositoryCustom {
 
-  List<Performance> findByPrimaryKeyIdPlayerOrderByPrimaryKeyGameDtPlayedDesc(String idPlayer);
-
   List<Performance> findByPrimaryKeyGameIdGameAndTeamOrderByScoreDesc(int idGame, Team team);
 }

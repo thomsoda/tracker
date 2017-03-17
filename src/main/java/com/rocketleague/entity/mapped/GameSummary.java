@@ -1,4 +1,4 @@
-package com.rocketleague.ui;
+package com.rocketleague.entity.mapped;
 
 import com.rocketleague.refdata.Arena;
 import com.rocketleague.refdata.Playlist;

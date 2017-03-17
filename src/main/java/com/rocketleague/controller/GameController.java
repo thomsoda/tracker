@@ -2,6 +2,7 @@ package com.rocketleague.controller;
 
 import com.rocketleague.entity.Game;
 import com.rocketleague.entity.Performance;
+import com.rocketleague.entity.mapped.GameSummary;
 import com.rocketleague.refdata.Team;
 import com.rocketleague.repository.GameRepository;
 import com.rocketleague.repository.PerformanceRepository;

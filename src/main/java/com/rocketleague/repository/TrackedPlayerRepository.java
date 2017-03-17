@@ -7,5 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface TrackedPlayerRepository extends CrudRepository<TrackedPlayer, String>, QueryDslPredicateExecutor, TrackedPlayerRepositoryCustom {
 
   Iterable<TrackedPlayer> findAllByOrderByIdPlayer();
+  Iterable<TrackedPlayer> findAll();
 
 }

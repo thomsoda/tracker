@@ -1,6 +1,6 @@
 package com.rocketleague.ui.stats.player;
 
-import com.rocketleague.repository.PlayerAverage;
+import com.rocketleague.entity.mapped.PlayerAverage;
 
 import java.util.List;
 

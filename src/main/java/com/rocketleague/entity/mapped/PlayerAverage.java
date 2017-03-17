@@ -1,4 +1,4 @@
-package com.rocketleague.repository;
+package com.rocketleague.entity.mapped;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

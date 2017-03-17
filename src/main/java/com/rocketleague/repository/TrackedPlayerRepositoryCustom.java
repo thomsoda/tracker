@@ -1,5 +1,7 @@
 package com.rocketleague.repository;
 
+import com.rocketleague.entity.mapped.PlayerAverage;
+
 import java.util.List;
 
 public interface TrackedPlayerRepositoryCustom {

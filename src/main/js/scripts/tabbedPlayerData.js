@@ -5,7 +5,7 @@ var tabList = [
     {'id': 0, 'name': 'GAME HISTORY', 'url': '/game-history'},
     {'id': 1, 'name': 'AVERAGES', 'url': '/averages'},
     {'id': 2, 'name': 'CONTRIBUTIONS', 'url': '/contributions'},
-    {'id': 3, 'name': 'FORM', 'url': '/form'},
+    {'id': 3, 'name': 'LAST 10 GAMES', 'url': '/form'},
     {'id': 4, 'name': 'MISC', 'url': '/misc'}
 ];
 
@@ -35,7 +35,7 @@ class TabbedPlayerDetailContainer extends React.Component {
         return (
             <div className="wrapper">
                 <div className="horizontal">
-                    <div className="playername">{this.props.params.idSelectedPlayer}</div>
+                    <Link to="/rocketleague" className="playername">{this.props.params.idSelectedPlayer}</Link>
                     <select className="green valign" onChange={this.onSelectPlaylist} value={this.state.playlist}>
                         <option value="ALL">ALL PLAYLISTS</option>
                         <option value="STANDARD">STANDARD</option>
@@ -47,7 +47,7 @@ class TabbedPlayerDetailContainer extends React.Component {
                         <option value="COMPETITIVE">COMPETITIVE</option>
                         <option value="FRIENDLY">FRIENDLY</option>
                     </select>
-                    {/*<Link to="/rocketleague" className="green button valign">PLAYER LIST</Link>*/}
+                    {/*{<Link to="/rocketleague" className="green button valign">PLAYER LIST</Link>}*/}
                 </div>
                 <Tabs currentTab={this.state.currentTab}
                       changeTab={this.changeTab}
