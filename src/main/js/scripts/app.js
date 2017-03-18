@@ -12,7 +12,7 @@ const TabbedPlayerData = require('./tabbedPlayerData').TabbedPlayerDetailContain
 const GameHistory = require('./gameHistory').GameHistory;
 const AveragesTab = require('./averagesTab').AveragesTab;
 const FormTab = require('./formTab').FormTab;
-const Contributions = require('./contributions').Contributions;
+const ContributionsTab = require('./contributionsTab').ContributionsTab;
 const Misc = require('./misc').Misc;
 
 class App extends React.Component {
@@ -35,7 +35,7 @@ ReactDOM.render((
                         <Route path="game/:idSelectedGame" component="{GameHistory}"/>
                     </Route>
                     <Route path="averages" component={AveragesTab}/>
-                    <Route path="contributions" component={Contributions}/>
+                    <Route path="contributions" component={ContributionsTab}/>
                     <Route path="form" component={FormTab}/>
                     <Route path="misc" component={Misc}/>
                 </Route>

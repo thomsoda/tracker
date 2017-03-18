@@ -13,9 +13,9 @@ class AveragesTab extends React.Component {
                 <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/goal-averages?" + params} columnHeader="GOALS"/>
                 <div className="gap"></div>
-                <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/assist-averages?" + params} columnHeader="SAVES"/>
+                <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/assist-averages?" + params} columnHeader="ASSISTS"/>
                 <div className="gap"></div>
-                <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/save-averages?" + params} columnHeader="ASSISTS"/>
+                <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/save-averages?" + params} columnHeader="SAVES"/>
                 <div className="gap"></div>
                 <Averages idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/tracked-players/shot-averages?" + params} columnHeader="SHOTS"/>
                 <div className="gap"></div>

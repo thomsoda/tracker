@@ -3,9 +3,9 @@ const Link = require('react-router').Link;
 
 var tabList = [
     {'id': 0, 'name': 'GAME HISTORY', 'url': '/game-history'},
-    {'id': 1, 'name': 'AVERAGES', 'url': '/averages'},
-    {'id': 2, 'name': 'CONTRIBUTIONS', 'url': '/contributions'},
-    {'id': 3, 'name': 'LAST 10 GAMES', 'url': '/form'},
+    {'id': 1, 'name': 'LAST 10 GAMES', 'url': '/form'},
+    {'id': 2, 'name': 'AVERAGES', 'url': '/averages'},
+    {'id': 3, 'name': 'CONTRIBUTIONS', 'url': '/contributions'},
     {'id': 4, 'name': 'MISC', 'url': '/misc'}
 ];
 
