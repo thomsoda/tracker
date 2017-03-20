@@ -1,6 +1,7 @@
 package com.rocketleague.repository;
 
 import com.rocketleague.entity.mapped.GameSummary;
+import com.rocketleague.entity.mapped.PerformanceStats;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -37,5 +38,18 @@ public class PerformanceRepositoryImpl implements PerformanceRepositoryCustom {
     }
     return whereClauseToReturn;
   }
+
+  public static final String PERFORMANCE_SELECT_CLAUSE = "select tp.id_player, g.dt_played, p.id_game, p.score, p.goals, p.assists, p.saves, p.shots, case when p.team = g.winning_team then 'WIN' else 'LOSS' end as win_loss_ind ";
+  public static final String PERFORMANCE_FROM_CLAUSE = "from tracked_player tp join performance p on p.id_player = tp.id_player join game g on g.id_game = p.id_game ";
+  public static final String PERFORMANCE_ORDER_BY_CLAUSE = "order by g.dt_played asc";
+
+  @Override
+  public List<PerformanceStats> findPerformances(String playerId, String playlist, Boolean isRanked) {
+    String whereClause = getWhereClause(WHERE_CLAUSE, playerId, playlist, isRanked);
+    Query query = entityManager.createNativeQuery(PERFORMANCE_SELECT_CLAUSE + PERFORMANCE_FROM_CLAUSE + whereClause +
+            PERFORMANCE_ORDER_BY_CLAUSE,"PerformanceStatsMapping");
+    return query.getResultList();
+  }
+
 
 }

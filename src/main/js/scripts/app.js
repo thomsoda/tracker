@@ -13,7 +13,7 @@ const GameHistory = require('./gameHistory').GameHistory;
 const AveragesTab = require('./averagesTab').AveragesTab;
 const FormTab = require('./formTab').FormTab;
 const ContributionsTab = require('./contributionsTab').ContributionsTab;
-const Misc = require('./misc').Misc;
+const MiscTab = require('./miscTab').MiscTab;
 
 class App extends React.Component {
     render() {
@@ -37,7 +37,7 @@ ReactDOM.render((
                     <Route path="averages" component={AveragesTab}/>
                     <Route path="contributions" component={ContributionsTab}/>
                     <Route path="form" component={FormTab}/>
-                    <Route path="misc" component={Misc}/>
+                    <Route path="misc" component={MiscTab}/>
                 </Route>
             </Route>
         </Router>
