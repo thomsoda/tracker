@@ -27,11 +27,12 @@ class MiscTab extends React.Component {
                 <MostTable idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/most-x-in-a-game/shots?" + params} columnHeader="SHOTS"/>
                 <div className="gap"></div>
                 <MostTable idSelectedPlayer={this.props.params.idSelectedPlayer} path={"/rocketleague/most-x-in-a-game/score?" + params} columnHeader="POINTS"/>
+                <div className="gap"></div>
+                <ArenaTable params={"&playerId=" + this.props.params.idSelectedPlayer + "&" + params}/>
             </div>
         );
     }
 }
-
 
 class StreakTable extends React.Component {
     constructor(props) {
@@ -137,5 +138,60 @@ class Most extends React.Component {
         )
     }
 }
+
+class ArenaTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {arenaWinPercents: []};
+    }
+
+    componentDidMount() {
+        this.loadArenaWinPercents(this.props.params);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.loadArenaWinPercents(nextProps.params);
+    }
+
+    loadArenaWinPercents(params) {
+        client({method: 'GET', path: "/rocketleague/arena-win-percents?" + params}).done(response => {
+            this.setState({arenaWinPercents: response.entity.arenaWinStats});
+        });
+    }
+
+    render() {
+        var arenaWinPercents = this.state.arenaWinPercents.map(arenaWinPercent =>
+            <ArenaWinPercent key={arenaWinPercent.arena} arenaWinPercent={arenaWinPercent}/>
+        );
+
+        return (
+            <div className="table">
+                <div className="row header">
+                    <div className="leftcell">ARENA </div>
+                    <div className="cell narrow">PLAYED</div>
+                    <div className="cell narrow">WON</div>
+                    <div className="cell narrow">LOST</div>
+                    <div className="cell narrow">WIN %</div>
+                </div>
+                {arenaWinPercents}
+            </div>
+        )
+    }
+}
+
+class ArenaWinPercent extends React.Component {
+    render() {
+        return (
+            <div className="row">
+                <div className="leftcell">{this.props.arenaWinPercent.arena}</div>
+                <div className="cell narrow">{this.props.arenaWinPercent.games}</div>
+                <div className="cell narrow">{this.props.arenaWinPercent.wins}</div>
+                <div className="cell narrow">{this.props.arenaWinPercent.losses}</div>
+                <div className="cell narrow">{this.props.arenaWinPercent.winPercent.toFixed(2)}</div>
+            </div>
+        )
+    }
+}
+
 
 export {MiscTab};
