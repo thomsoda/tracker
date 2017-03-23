@@ -27,7 +27,7 @@ public class GameSummary {
   private final Playlist playlist;
   private final boolean competitiveInd;
   private final Date date;
-  private final Arena arena;
+  private final String arena;
   private final int orangeScore;
   private final int blueScore;
   private final WinLoss winLoss;
@@ -37,7 +37,7 @@ public class GameSummary {
     this.playlist = Playlist.valueOf(playlist);
     this.competitiveInd = competitiveInd;
     this.date = date;
-    this.arena = Arena.valueOf(arena);
+    this.arena = Arena.valueOf(arena).getNameForUi();
     this.orangeScore = orangeScore;
     this.blueScore = blueScore;
     this.winLoss = WinLoss.valueOf(winLoss);
@@ -55,7 +55,7 @@ public class GameSummary {
     return date;
   }
 
-  public Arena getArena() {
+  public String getArena() {
     return arena;
   }
 

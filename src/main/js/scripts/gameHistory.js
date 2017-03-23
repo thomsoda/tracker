@@ -51,6 +51,7 @@ class GameList extends React.Component {
                     <div className="leftcell">DATE</div>
                     <div className="cell">PLAYLIST</div>
                     <div className="cell">GAME TYPE</div>
+                    <div className="cell">ARENA</div>
                     <div className="cell">SCORE</div>
                     <div className="cell">W/L</div>
                 </div>
@@ -68,6 +69,7 @@ class Game extends React.Component {
                 <div className="leftcell">{moment(this.props.game.date).format('DD-MMM-YYYY HH:mm')}</div>
                 <div className="cell">{this.props.game.playlist}</div>
                 <div className="cell">{this.props.game.competitiveInd ? 'Competitive' : 'Friendly'}</div>
+                <div className="cell">{this.props.game.arena}</div>
                 <div className="cell">{this.getScore()}</div>
                 <div className="cell">{this.props.game.winLoss}</div>
             </Link>

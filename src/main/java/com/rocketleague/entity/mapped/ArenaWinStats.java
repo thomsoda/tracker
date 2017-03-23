@@ -1,5 +1,7 @@
 package com.rocketleague.entity.mapped;
 
+import com.rocketleague.refdata.Arena;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -26,7 +28,7 @@ public class ArenaWinStats {
 
   public ArenaWinStats(String playerId, String arena, int games, int wins, int losses, BigDecimal winPercent) {
     this.playerId = playerId;
-    this.arena = arena;
+    this.arena = Arena.valueOf(arena).getNameForUi();
     this.games = games;
     this.wins = wins;
     this.losses = losses;
